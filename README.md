@@ -1,4 +1,5 @@
-# ov-bootvideo
+ov-bootvideo [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+============
 Bootvideo collection for Open Vision
 
 * https://www.mp4compress.com is a good online tool for compress and make compatible h264 mp4
