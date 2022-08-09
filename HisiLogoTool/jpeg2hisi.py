@@ -26,7 +26,7 @@ MCE_LOGO_KEYNAME_FLAG = b"LOGO_KEY_FLAG"
 MCE_LOGO_KEYNAME_CONTLEN  = b"LOGO_KEY_LEN"
 
 if len(sys.argv) == 1:
-	print( "Syntax: %s <logo.jpg>" % sys.argv[0])
+	print("Syntax: %s <logo.jpg>" % sys.argv[0])
 	sys.exit(1)	
 
 filename = sys.argv[1]
