@@ -27,7 +27,7 @@ MCE_LOGO_KEYNAME_CONTLEN = b"LOGO_KEY_LEN"
 
 if len(sys.argv) == 1:
 	print("Syntax: %s <logo.jpg>" % sys.argv[0])
-	sys.exit(1)	
+	sys.exit(1)
 
 filename = sys.argv[1]
 filesize = os.path.getsize(filename)
@@ -57,10 +57,10 @@ with open(filename, 'rb') as jpg:
 	# We are at a SOFn block
 	pos += 1 # Skip `precision' byte.
 	h, w = struct.unpack('>HH', jpgdata[pos:pos + 4])
-	
+
 	if "%dx%d" % (w, h) not in ["1920x1080", "1280x720"]:
 		print("Format %dx%d not supported by hisi soc" % (w, h))
-		sys.exit(1)	
+		sys.exit(1)
 
 	logo = open(os.path.splitext(filename)[0] + '.img', 'wb')
 
@@ -84,4 +84,3 @@ with open(filename, 'rb') as jpg:
 	logo.write(b'\x00' * (0x2000 - 0x80))
 	logo.write(jpgdata)
 	logo.close()
-
