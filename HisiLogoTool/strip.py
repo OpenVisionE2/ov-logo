@@ -23,7 +23,7 @@ import struct
 HISI_HEADER = b"###"
 MCE_LOGO_TABLENAME = b"LOGO_TABLE"
 MCE_LOGO_KEYNAME_FLAG = b"LOGO_KEY_FLAG"
-MCE_LOGO_KEYNAME_CONTLEN  = b"LOGO_KEY_LEN"
+MCE_LOGO_KEYNAME_CONTLEN = b"LOGO_KEY_LEN"
 
 if len(sys.argv) == 1:
 	print("Syntax: %s <logo.img>" % sys.argv[0])

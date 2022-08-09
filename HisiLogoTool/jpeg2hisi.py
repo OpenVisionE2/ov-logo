@@ -23,7 +23,7 @@ import struct
 HISI_HEADER = b"###"
 MCE_LOGO_TABLENAME = b"LOGO_TABLE"
 MCE_LOGO_KEYNAME_FLAG = b"LOGO_KEY_FLAG"
-MCE_LOGO_KEYNAME_CONTLEN  = b"LOGO_KEY_LEN"
+MCE_LOGO_KEYNAME_CONTLEN = b"LOGO_KEY_LEN"
 
 if len(sys.argv) == 1:
 	print("Syntax: %s <logo.jpg>" % sys.argv[0])
@@ -46,17 +46,17 @@ with open(filename, 'rb') as jpg:
 		pos += size
 		byte = jpgdata[pos]
 		#print ("%02x - %02x" % (byte,pos))
-		pos+=1
+		pos += 1
 		while byte == 0xff:
 			byte = jpgdata[pos]
-			pos+=1
+			pos += 1
 			#print ("increment", pos, byte)
 		ftype = byte
-		size = struct.unpack('>H', jpgdata[pos:pos+2])[0] - 2
-		pos+=2
+		size = struct.unpack('>H', jpgdata[pos:pos + 2])[0] - 2
+		pos += 2
 	# We are at a SOFn block
-	pos+=1 # Skip `precision' byte.
-	h, w = struct.unpack('>HH', jpgdata[pos:pos+4])
+	pos += 1 # Skip `precision' byte.
+	h, w = struct.unpack('>HH', jpgdata[pos:pos + 4])
 	
 	if "%dx%d" % (w,h) not in ["1920x1080", "1280x720"]:
 		print("Format %dx%d not supported by hisi soc" % (w,h))
