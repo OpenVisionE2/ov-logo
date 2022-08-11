@@ -59,7 +59,7 @@ with open(filename, 'rb') as jpg:
 	pos += 1 # Skip `precision' byte.
 	h, w = struct.unpack('>HH', jpgdata[pos:pos + 4])
 
-	if "%dx%d" % (w, h) not in ["1920x1080", "1280x720"]:
+	if "%dx%d" % (w, h) not in ["1920x1080", "1280x720", "720x576"]:
 		print("Format %dx%d not supported by hisi soc" % (w, h))
 		sys.exit(1)
 
