@@ -15,4 +15,5 @@ To convert the extracted logo to jpeg:
 * hisi2jpeg.py logo.img 
 
 To convert your own jpeg logo to HiSilicon format:
+* ffmpeg -i logo.jpg -y -s 1920*1080 -pix_fmt yuvj420p logo.jpg
 * jpeg2hisi.py logo.jpg
