@@ -18,8 +18,8 @@
 # along with dogtag.  If not, see <http://www.gnu.org/licenses/>.
 
 import sys
-import os
-import struct
+from os.path import getsize, splitext
+from struct import unpack, pack
 
 HISI_HEADER = b"###"
 MCE_LOGO_TABLENAME = b"LOGO_TABLE"
@@ -31,13 +31,13 @@ if len(sys.argv) == 1:
 	sys.exit(1)
 
 filename = sys.argv[1]
-filesize = os.path.getsize(filename)
+filesize = getsize(filename)
 
 with open(filename, 'rb') as jpg:
 	jpgdata = jpg.read(filesize)
 
-	if jpgdata[6:10] != b'JFIF':
-		print("File %s isn't a jpeg image" % filename)
+#	if jpgdata[6:10] != b'JFIF':
+#		print("File %s isn't a jpeg image" % filename)
 
 	#https://stackoverflow.com/questions/8032642/how-to-obtain-image-size-using-standard-python-class-without-using-external-lib
 	size = 2
@@ -53,17 +53,17 @@ with open(filename, 'rb') as jpg:
 			pos += 1
 			#print ("increment", pos, byte)
 		ftype = byte
-		size = struct.unpack('>H', jpgdata[pos:pos + 2])[0] - 2
+		size = unpack('>H', jpgdata[pos:pos + 2])[0] - 2
 		pos += 2
 	# We are at a SOFn block
 	pos += 1 # Skip `precision' byte.
-	h, w = struct.unpack('>HH', jpgdata[pos:pos + 4])
+	h, w = unpack('>HH', jpgdata[pos:pos + 4])
 
-	if "%dx%d" % (w, h) not in ["1920x1080", "1280x720"]:
-		print("Format %dx%d not supported by hisi soc" % (w, h))
-		sys.exit(1)
+#	if "%dx%d" % (w, h) != "1920x1080":
+#		print("Format %dx%d not supported by HiSilicon SoC" % (w, h))
+#		sys.exit(1)
 
-	logo = open(os.path.splitext(filename)[0] + '.img', 'wb')
+	logo = open(splitext(filename)[0] + '.img', 'wb')
 
 	logo.write(HISI_HEADER)
 	logo.write(b'\x00\x7c\x00\x00\x00')
@@ -81,7 +81,7 @@ with open(filename, 'rb') as jpg:
 	logo.write(b'\x00' * 20)
 	logo.write(b'\x04')
 	logo.write(b'\x00' * 3)
-	logo.write(struct.pack('<q', filesize)) #size
+	logo.write(pack('<q', filesize)) #size
 	logo.write(b'\x00' * (0x2000 - 0x80))
 	logo.write(jpgdata)
 	logo.close()
