@@ -36,8 +36,8 @@ filesize = os.path.getsize(filename)
 with open(filename, 'rb') as jpg:
 	jpgdata = jpg.read(filesize)
 
-	if jpgdata[6:10] != b'JFIF':
-		print("File %s isn't a jpeg image" % filename)
+#	if jpgdata[6:10] != b'JFIF':
+#		print("File %s isn't a jpeg image" % filename)
 
 	#https://stackoverflow.com/questions/8032642/how-to-obtain-image-size-using-standard-python-class-without-using-external-lib
 	size = 2
@@ -59,9 +59,9 @@ with open(filename, 'rb') as jpg:
 	pos += 1 # Skip `precision' byte.
 	h, w = struct.unpack('>HH', jpgdata[pos:pos + 4])
 
-	if "%dx%d" % (w, h) not in ["1920x1080", "1280x720", "720x576"]:
-		print("Format %dx%d not supported by hisi soc" % (w, h))
-		sys.exit(1)
+#	if "%dx%d" % (w, h) != "1920x1080":
+#		print("Format %dx%d not supported by HiSilicon SoC" % (w, h))
+#		sys.exit(1)
 
 	logo = open(os.path.splitext(filename)[0] + '.img', 'wb')
 
