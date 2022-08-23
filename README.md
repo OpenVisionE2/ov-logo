@@ -7,13 +7,11 @@ Bootvideo collection for Open Vision
 
 How to create 720p mvi bootlogo:
 * ffmpeg -i bootlogo.jpg -r 25 -b 20000 -s hd720 bootlogo.m1v (type 1 - old)
-* ffmpeg -i bootlogo.jpg -r 25 -b:v 20000 -c:v mpeg2video -s hd720 bootlogo.m1v (type 2 - new)
 * mv -f bootlogo.m1v bootlogo.mvi
 
 # bootlogo (ARM)
 
 How to create 1080p mvi bootlogo:
-* ffmpeg -i bootlogo.jpg -r 25 -b 20000 -s hd1080 bootlogo.m1v (type 1 - old)
 * ffmpeg -i bootlogo.jpg -r 25 -b:v 20000 -c:v mpeg2video -s hd1080 bootlogo.m1v (type 2 - new)
 * mv -f bootlogo.m1v bootlogo.mvi
 
