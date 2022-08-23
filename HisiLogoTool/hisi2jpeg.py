@@ -18,8 +18,8 @@
 # along with dogtag.  If not, see <http://www.gnu.org/licenses/>.
 
 import sys
-import os
-import struct
+from os.path import getsize, splitext, isfile
+from struct import unpack
 
 HISI_HEADER = b"###"
 MCE_LOGO_TABLENAME = b"LOGO_TABLE"
@@ -31,11 +31,11 @@ if len(sys.argv) == 1:
 	sys.exit(1)
 
 filename = sys.argv[1]
-if not os.path.exists(filename):
+if not isfile(filename):
 	print("File %s doesn't exists" % filename)
 	sys.exit(1)
 
-if os.path.getsize(filename) < 0x2000:
+if getsize(filename) < 0x2000:
 	print("File %s is invalid" % filename)
 	sys.exit(1)
 
@@ -45,7 +45,7 @@ with open(filename, 'rb') as logo:
 		print("File %s is invalid" % filename)
 		sys.exit(1)
 
-	jpeg = open(os.path.splitext(filename)[0] + '.jpg', 'wb')
-	data = logo.read(struct.unpack('<q', header[0x78:0x80])[0])
+	jpeg = open(splitext(filename)[0] + '.jpg', 'wb')
+	data = logo.read(unpack('<q', header[0x78:0x80])[0])
 	jpeg.write(data)
 	jpeg.close()
