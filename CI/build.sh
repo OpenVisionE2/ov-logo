@@ -22,7 +22,7 @@ commit_files() {
 }
 
 upload_files() {
-  git remote add upstream https://${GITHUB_TOKEN}@github.com/OpenVisionE2/ov-bootvideo.git > /dev/null 2>&1
+  git remote add upstream https://${GITHUB_TOKEN}@github.com/OpenVisionE2/ov-logo.git > /dev/null 2>&1
   git push --quiet upstream master || echo "failed to push with error $?"
 }
 
