@@ -1,6 +1,6 @@
-ov-bootvideo [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) [![ovboot](https://github.com/OpenVisionE2/ov-bootvideo/actions/workflows/ovboot.yml/badge.svg)](https://github.com/OpenVisionE2/ov-bootvideo/actions/workflows/ovboot.yml) [![ovbot](https://github.com/OpenVisionE2/ov-bootvideo/actions/workflows/ovbot.yml/badge.svg)](https://github.com/OpenVisionE2/ov-bootvideo/actions/workflows/ovbot.yml)
-============
-Bootvideo collection for Open Vision
+ov-logo [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) [![ovboot](https://github.com/OpenVisionE2/ov-logo/actions/workflows/ovboot.yml/badge.svg)](https://github.com/OpenVisionE2/ov-logo/actions/workflows/ovboot.yml) [![ovbot](https://github.com/OpenVisionE2/ov-logo/actions/workflows/ovbot.yml/badge.svg)](https://github.com/OpenVisionE2/ov-logo/actions/workflows/ovbot.yml)
+=======
+Logo collection for Open Vision
 * https://www.mp4compress.com is a good online tool for compress and make compatible h264 mp4
 
 # bootlogo (Mipsel-SH4)
@@ -19,4 +19,4 @@ How to create 1080p mvi bootlogo:
 
 How to create 1080p img logo:
 * ffmpeg -i logo.jpg -y -s 1920*1080 -pix_fmt yuvj420p logo.jpg
-* python3 jpeg2hisi.py logo.jpg (https://github.com/OpenVisionE2/ov-bootvideo/blob/master/HisiLogoTool/jpeg2hisi.py)
+* python3 jpeg2hisi.py logo.jpg (https://github.com/OpenVisionE2/ov-logo/blob/master/HisiLogoTool/jpeg2hisi.py)
