@@ -22,3 +22,5 @@ How to create 1080p mvi bootlogo:
 How to create 1080p img logo:
 * ffmpeg -i logo.jpg -y -s 1920*1080 -pix_fmt yuvj420p logo.jpg
 * python3 jpeg2hisi.py logo.jpg (https://github.com/OpenVisionE2/ov-logo/blob/master/HisiLogoTool/jpeg2hisi.py)
+
+For HiSilicon the jpeg needs to use 4:2:0 chroma subsampling to be managed by the SoC
